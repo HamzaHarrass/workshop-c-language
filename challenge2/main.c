@@ -5,13 +5,10 @@ int main()
 {
     float F;
     float C;
-
-
-
-    printf(" entre la temperature en fahrenh : ");
-    scanf("%f",&F);
-    C=(F-32)/1.8;
-    printf("C=%.2f",C);
+    printf(" entre degre celsius : ");
+    scanf("%f",&C);
+    F=(C*1.8)+32;
+    printf("F=%.2f",F);
 
     return 0;
 }
