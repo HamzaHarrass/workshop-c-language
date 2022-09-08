@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1662565969 source:c:\users\asus\desktop\prj\challenge4\main.c
+	<stdio.h>
+	<stdlib.h>
+
