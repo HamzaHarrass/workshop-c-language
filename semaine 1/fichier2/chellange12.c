@@ -18,7 +18,6 @@
 	 }
  	else if (HH<hh || MM<mm){
  		printf("le deuxieme instant vient avant le premier");
-
 	 }
  	
   return 0;
