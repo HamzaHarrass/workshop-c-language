@@ -3,27 +3,16 @@
 
  int main(){
  	
- 	int i;
+ 	int i, n, num_etoile=1, num_esp,j;
+ 	scanf("%d", &n);
  	
- 	for(i=0;i<=15;i++)
+ 	num_esp = n -1;
+ 	for(i=0;i<n;i++)
  	{
- 		switch(i){
-		 case 0:printf("\t *\n");
- 			break ;
- 		case 1:printf("\t***\n");
- 			break ;
- 		case 2:	printf("       ***** \n");
- 			break;
- 		case 3:printf("      *******\n");
- 			break;
- 		case 4:printf("     *********\n");
- 			break;
- 		case 5:printf("    ***********\n");
- 			break;
- 		case 6:printf("   *************\n");
- 			break;
- 		
- 		}
- 			
+ 		for( j = 0;j<num_esp; j++)printf(" ");
+ 		for( j = 0;j<num_etoile;j++)printf("*"); 		
+ 		printf("\n");
+ 		num_etoile+=2;
+		num_esp--;	
 	 }
  }
