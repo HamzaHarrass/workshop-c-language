@@ -2,7 +2,7 @@
 
   int divededby(int n , int a){
   	
-  	float A,N;
+  	float A;
   	
      
   	
