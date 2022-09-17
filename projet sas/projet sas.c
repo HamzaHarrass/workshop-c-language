@@ -11,7 +11,7 @@ struct Produit {
 	int quantite;	
 };
 
-      struct Produit P[3];
+      struct Produit P[10000];
 	  
       int  length_array=0;
 
@@ -19,22 +19,23 @@ struct Produit {
     void Fadd(){
  //	printf("ajouter un produit ");
         int i,a;
+        int b;
 		printf("how much produit do you want add  ") 	;
 		scanf("%d",&a);
  	
  	    for(i=0;i<a;i++){
  	    	
  		   printf("\n entre le code de produit : \n");
- 		   scanf("%d",&P[i].code);
+ 		   scanf("%d",&P[length_array].code);
  		
  		   printf("\n entre le nom de produit : \n");
- 		   scanf("%s",&P[i].nom);
+ 		   scanf("%s",&P[length_array].nom);
  		
  		   printf("\n entre le prix de produit : \n");
- 		   scanf("%f",&P[i].prix);
+ 		   scanf("%f",&P[length_array].prix);
  		
  		   printf("\n entre la quantite de produit : \n");
- 		   scanf("%d",&P[i].quantite);
+ 		   scanf("%d",&P[length_array].quantite);
  		   
  		   length_array++;
 	  }
@@ -42,7 +43,23 @@ struct Produit {
  
 
     int Frecherche(){
- 	    printf("recherche un produit ");
+ 	    //printf("recherche un produit ");
+ 	    int r,j;
+ 	    printf("donner le code de produit que vous rechercher ;");
+ 	    scanf ("%d",&r);
+ 	    for(j=0;j<length_array;j++){
+ 	    	if(P[j].code == r){
+ 	    		printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
+            	printf("______________________________________________________________________________________\n\n");
+            	printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
+            	break ;
+			 }
+ 	    		
+		 }
+//         	 else {
+//		 	printf("Ce produit n'est pas disponible");
+//		 }
+ 	    
     }
 
     int Fsupprimer(){
@@ -52,9 +69,9 @@ struct Produit {
     void Fafficher(){
     	int i,a;
     	printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
-    	printf("_________________________________________________________________________________________________\n\n");
+    	printf("______________________________________________________________________________________\n\n");
 	    for(i=0;i<length_array;i++){
-          printf("      %d    ||      %s         ||        %.2f dh         ||           %d       ||\n",P[i].code , P[i].nom , P[i].prix , P[i].quantite);
+          printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[i].code , P[i].nom , P[i].prix , P[i].quantite);
      	}
  	//printf("afficher un produit ");
  
