@@ -3,6 +3,9 @@
 #include<string.h>
 
  
+   int r,j,value;
+ 	    char n[20];
+// 	    
  
 struct Produit {
     int code ;
@@ -44,16 +47,32 @@ struct Produit {
 
     int Frecherche(){
  	    //printf("recherche un produit ");
- 	    int r,j;
- 	    printf("donner le code de produit que vous rechercher ;");
- 	    scanf ("%d",&r);
- 	    for(j=0;j<length_array;j++){
- 	    	if(P[j].code == r){
- 	    		printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
-            	printf("______________________________________________________________________________________\n\n");
-            	printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
-            	break ;
-			 }
+ 	//  printf("donner le code de produit que vous rechercher ;");
+// 	    scanf ("%d",&r);
+// 	    
+//		 
+//		 
+//		 for(j=0;j<length_array;j++){
+// 	    	if(P[j].code == r){
+// 	    		printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
+//            	printf("______________________________________________________________________________________\n\n");
+//            	printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
+//            	break ;
+//			 }
+			 
+			  printf("donner le nom de produit que vous rechercher ;");
+ 	    scanf ("%s",&n);
+ 	    
+			 for(j=0;j<length_array;j++){
+			 	
+			 	value= strcmp (n,P[j].nom );
+			 	
+ 	         	if(value==0){
+ 	    	    	printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
+                	printf("______________________________________________________________________________________\n\n");
+                	printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
+             	break ;
+			 }else printf ("hh");
  	    		
 		 }
 //         	 else {
