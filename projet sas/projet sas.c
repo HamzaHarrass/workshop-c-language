@@ -2,25 +2,23 @@
 #include<stdlib.h>
 #include<string.h>
 
+  
  
-   int r,j,value;
- 	    char n[20];
-// 	    
- 
-struct Produit {
-    int code ;
-    char nom[20];
-    float prix ;
-	int quantite;	
-};
+    struct Produit {
+         int code ;
+         char nom[20];
+         float prix ;
+	     int quantite;	
+    };
 
-      struct Produit P[10000];
-	  
-      int  length_array=0;
+	int c,j,a,value,length_array=0;
+ 	    char n[20]; 	    
+        struct Produit P[1000];
+
 
 
     void Fadd(){
- //	printf("ajouter un produit ");
+
         int i,a;
         int b;
 		printf("how much produit do you want add  ") 	;
@@ -44,46 +42,68 @@ struct Produit {
 	  }
 	 }
  
+ 
+ 
+ 
+ // fonction Frecherche pour rechercher des produit avec le code et le nom 
+ 
+ 
 
     int Frecherche(){
- 	    //printf("recherche un produit ");
- 	//  printf("donner le code de produit que vous rechercher ;");
-// 	    scanf ("%d",&r);
-// 	    
-//		 
-//		 
-//		 for(j=0;j<length_array;j++){
-// 	    	if(P[j].code == r){
-// 	    		printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
-//            	printf("______________________________________________________________________________________\n\n");
-//            	printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
-//            	break ;
-//			 }
-			 
-			  printf("donner le nom de produit que vous rechercher ;");
- 	    scanf ("%s",&n);
- 	    
-			 for(j=0;j<length_array;j++){
-			 	
-			 	value= strcmp (n,P[j].nom );
-			 	
- 	         	if(value==0){
- 	    	    	printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
+    	printf("-----------------------------------------\n");
+    	printf(" -> 1 : chercher avec le code de produit :\n");
+    	printf(" -> 2 : chercher avec le nom de produit  :\n");
+    	printf("-----------------------------------------");
+      	
+      	
+    		printf ("\n choisir un choix  :  ");
+ 	     scanf("%d",&a);
+ 	     
+    			switch (a){
+    		
+    		case 1 : printf("recherche un produit ");
+                 	 printf("donner le code de produit que vous rechercher ;");
+ 	                 scanf ("%d",&c);
+ 	                 
+		              for(j=0;j<length_array;j++){
+ 	    	          if(P[j].code == c){
+ 	    	        printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
                 	printf("______________________________________________________________________________________\n\n");
-                	printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
-             	break ;
-			 }else printf ("hh");
- 	    		
-		 }
-//         	 else {
-//		 	printf("Ce produit n'est pas disponible");
-//		 }
- 	    
-    }
+            	    printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
+            	    break ;			 }
+		            }
+            break ;
+			
+			
+			
+			case 2 :   printf("donner le nom de produit que vous rechercher ;");
+ 	                   scanf ("%s",&n);
+ 	                   
+	            	for(j=0;j<length_array;j++){
+			 		value= strcmp (n,P[j].nom );
+ 	                	if(value==0){
+ 	    	        	printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
+                	    printf("______________________________________________________________________________________\n\n");
+                	    printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
+                	break ;
+			    }else printf ("Ce produit n'est pas disponible");	
+		      }
+		    
+		    default : printf("Votre choix n'est pas là ");
+          }   
+}
+
+
+
 
     int Fsupprimer(){
  	    printf("suprimmer  un produit ");
     }
+    	
+    	
+    	
+    	
+    	
     	
     void Fafficher(){
     	int i,a;
@@ -92,19 +112,16 @@ struct Produit {
 	    for(i=0;i<length_array;i++){
           printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[i].code , P[i].nom , P[i].prix , P[i].quantite);
      	}
- 	//printf("afficher un produit ");
  
-   // printf("      %d    ||      %s        ||         %.2f dh        ||            %d      ||\n",P2.code , P2.nom , P2.prix , P2.quantite);
-   // printf("      %d    ||      %s         ||        %.2f dh         ||           %d       ||\n",P3.code , P3.nom , P3.prix , P3.quantite);
    }
 
 
  int main (){
  	
  	
+ 	 	int n;
  	
- 	
- 	int n;
+
   
 	
  	printf("-----------------------------------");
@@ -116,7 +133,7 @@ struct Produit {
  	
  	
  	     do{
- 	     	printf ("\n choisir un choix  :  ");
+ 	     	printf ("\n choisir un choix principale  :  ");
  	     scanf("%d",&n);
  	     	
  	     	 switch(n){
@@ -131,11 +148,11 @@ struct Produit {
  	     	break;
  	     	
  	     	case 4 : Fafficher();
- 	     	break ;	
+ 	     	break ;
+			  
+			default :  printf("Votre choix n'est pas là ");
 	        }  
 	        
-	        
-		  
 		  }while(n<=4||n>0);
  	    
  	     
