@@ -1,29 +1,25 @@
 #include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+//#include<stdlib.h>
+//#include<string.h>
 
-  
- 
     struct Produit {
          int code ;
          char nom[20];
          float prix ;
 	     int quantite;	
     };
-    
-    struct Produit P[1000]={
-    	
+    struct Produit P[1000]={	
     	{1,"aspro",15,15},
+        {3,"aspro",15,1},
+       	{5,"aspro",15,2},
+        {6,"aspro",15,1},
+        {7,"aspro",15,3},
     	{2,"dolipran",20,20},
 		{99,"aspro",15,15}
 	};
-
-	int c,j,a,value,length_array=3,possition;
+	int c,j,a,value,length_array=7,possition;
  	    char n[20]; 	    
         struct Produit P[1000];
-
-
-
     void Fadd(){
 
         int i,a;
@@ -48,15 +44,8 @@
  		   length_array++;
 	  }
 	 }
- 
- 
- 
- 
  // fonction Frecherche pour rechercher des produit avec le code et le nom 
- 
- 
-
-    int Frecherche(){
+    void Frecherche(){
     	printf("-----------------------------------------\n");
     	printf(" -> 1 : chercher avec le code de produit :\n");
     	printf(" -> 2 : chercher avec le nom de produit  :\n");
@@ -80,9 +69,6 @@
             	    break ;			 }
 		            }
             break ;
-		
-			
-			
 			case 2 :   printf("donner le nom de produit que vous rechercher ;");
  	                   scanf ("%s",&n);
  	                   
@@ -93,17 +79,35 @@
                 	    printf("______________________________________________________________________________________\n\n");
                 	    printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
                 	break ;
-			    }else printf ("Ce produit n'est pas disponible");	
+			    }
 		      }
-		    
 		    default : printf("Votre choix n'est pas là ");
           }   
-}
-
+    }
+    
+   void Fmodifie(){
+      printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
+      printf("______________________________________________________________________________________\n\n");
+      for (j=0;j<length_array;j++){
+	        if(P[j].quantite<3){       
+	        printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
+		 }
+	    }
+	    
+	     printf("entre le code de produit  que vous modifie :");
+	  scanf("%d",&c);
+	   
+   for(j=0;j<length_array;j++){
+ 	  if(c ==P[j].code ){
+ 	 	printf("%d",j);
+      printf("entre le quantite que vous ajouter :");
+	  scanf("%d",&a);
+	  P[j].quantite+=a;   
+     }
+    }
+   } 
     // Fsupprimer est un fonction pour supprimer un produit avec le code ou le nom 
-
-
-    int Fsupprimer(){
+    void Fsupprimer(){
  	    printf("supprimer un produit \n");
                  	 printf("donner le code de produit que vous supprimer ;");
  	                 scanf ("%d",&c);  
@@ -116,28 +120,11 @@
               		     P[j]=P[j+1];
               		     length_array--;
               	        break;	
-			          }
-			            
- 	    	        break ;	
+			          }	
 		    		 }
-		            }
-
-             
-			  
-//			  for(j=0;j<length_array;j++){
-//              
-//			  }
-//			  length_array--;
- 	    
-    }
-    	
-    	
-    	
-    	
+		           }	    
+          }
     //fafficher est un fonction pour afficher tous les produit 	
-    	
-    	
-    	
     void Fafficher(){
     	int i,a;
     	printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
@@ -145,26 +132,16 @@
 	    for(i=0;i<length_array;i++){
           printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[i].code , P[i].nom , P[i].prix , P[i].quantite);
      	}
- 
    }
-
-
  int main (){
- 	
- 	
  	 	int n;
- 	
-
-  
-	
  	printf("-----------------------------------");
  	printf("\n  -> 1-add a product\n");
     printf("\n  -> 2-search for a product\n ");
- 	printf("\n  -> 3-delete a product\n");
- 	printf("\n  -> 4-display a product\n");
+    printf("\n  -> 3-modify a product\n");
+ 	printf("\n  -> 4-delete a product\n");
+ 	printf("\n  -> 5-display a product\n");
  	printf("-----------------------------------");
- 	
- 	
  	     do{
  	     	printf ("\n choisir un choix principale  :  ");
  	     scanf("%d",&n);
@@ -177,17 +154,18 @@
  	     	case 2 : Frecherche();
  	     	break ;
  	     	
- 	     	case 3 : Fsupprimer();
+ 	     	case 3 : Fmodifie();
  	     	break;
  	     	
- 	     	case 4 : Fafficher();
+ 	     	case 4 : Fsupprimer();
  	     	break ;
-			  
+
+			case 5 : Fafficher();
+ 	     	break ;
+  
 			default :  printf("Votre choix n'est pas là ");
 	        }  
 	        
-		  }while(n<=4||n>0);
- 	    
- 	     
+		  }while(n<=5||n>0);
  return 0;	
  }
