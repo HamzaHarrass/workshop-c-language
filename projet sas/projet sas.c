@@ -10,8 +10,15 @@
          float prix ;
 	     int quantite;	
     };
+    
+    struct Produit P[1000]={
+    	
+    	{1,"aspro",15,15},
+    	{2,"dolipran",20,20},
+		{99,"aspro",15,15}
+	};
 
-	int c,j,a,value,length_array=0;
+	int c,j,a,value,length_array=3,possition;
  	    char n[20]; 	    
         struct Produit P[1000];
 
@@ -73,7 +80,7 @@
             	    break ;			 }
 		            }
             break ;
-			
+		
 			
 			
 			case 2 :   printf("donner le nom de produit que vous rechercher ;");
@@ -93,15 +100,41 @@
           }   
 }
 
-
+    // Fsupprimer est un fonction pour supprimer un produit avec le code ou le nom 
 
 
     int Fsupprimer(){
- 	    printf("suprimmer  un produit ");
+ 	    printf("supprimer un produit \n");
+                 	 printf("donner le code de produit que vous supprimer ;");
+ 	                 scanf ("%d",&c);  
+					     
+		              for(j=0;j<length_array;j++){
+ 	    	          if(c ==P[j].code ){
+ 	    	          	printf("%d",j);
+ 	                    possition = j;
+                       for (j=possition;j<length_array;j++){
+              		     P[j]=P[j+1];
+              		     length_array--;
+              	        break;	
+			          }
+			            
+ 	    	        break ;	
+		    		 }
+		            }
+
+             
+			  
+//			  for(j=0;j<length_array;j++){
+//              
+//			  }
+//			  length_array--;
+ 	    
     }
     	
     	
     	
+    	
+    //fafficher est un fonction pour afficher tous les produit 	
     	
     	
     	
