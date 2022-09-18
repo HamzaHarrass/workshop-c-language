@@ -9,15 +9,10 @@
 	     int quantite;	
     };
     struct Produit P[1000]={	
-    	{1,"aspro",15,15},
-        {3,"aspro",15,1},
-       	{5,"aspro",15,2},
-        {6,"aspro",15,1},
         {7,"aspro",15,3},
     	{2,"dolipran",20,20},
-		{99,"aspro",15,15}
 	};
-	int c,j,a,value,length_array=7,possition;
+	int c,j,a,value,length_array=2,possition;
  	    char n[20]; 	    
         struct Produit P[1000];
     void Fadd(){
@@ -94,13 +89,13 @@
 		 }
 	    }
 	    
-	     printf("entre le code de produit  que vous modifie :");
+	     printf("entre le code de produit  que vous modifie :\n");
 	  scanf("%d",&c);
 	   
    for(j=0;j<length_array;j++){
  	  if(c ==P[j].code ){
  	 	printf("%d",j);
-      printf("entre le quantite que vous ajouter :");
+      printf("entre la quantite que vous ajouter :\n");
 	  scanf("%d",&a);
 	  P[j].quantite+=a;   
      }
