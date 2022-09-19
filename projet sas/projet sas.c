@@ -160,6 +160,7 @@
       }
     }
     
+     // cet fonction pour affiche le statistique des achats    
     void statistiques(){
     	
     	printf("le prix des produits vendus aujourd'hui  : %.2f\n",totalsomme);
