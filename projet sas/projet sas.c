@@ -1,6 +1,5 @@
-#include<stdio.h>
-//#include<stdlib.h>
-//#include<string.h>
+   #include<stdio.h>
+
 
     struct Produit {
          int code ;
@@ -14,11 +13,12 @@
     	{2,"dolipran",20,20},
 	};
 	
-     	int c,j,a,value,length_array=2,possition;
+	
+     	int c,j,a,value,length_array=2,possition,totalqauntite=0;
  	    char n[20]; 	    
         struct Produit P[1000];
         float somme =0,totalsomme=0;
-		int totalqauntite=0;
+        
         
     void Fadd(){
 
@@ -60,12 +60,11 @@
     		case 1 : printf("recherche un produit ");
                  	 printf("donner le code de produit que vous rechercher ;");
  	                 scanf ("%d",&c);
- 	                 
 		              for(j=0;j<length_array;j++){
  	    	          if(P[j].code == c){
- 	    	        printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
+ 	    	       	printf("     code       ||      nom       ||        prix         ||     quantite      ||\n");
                 	printf("______________________________________________________________________________________\n\n");
-            	    printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
+            	    printf(" %14d || %14s || %17.2fdh || %17d ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
             	    break ;			 }
 		            }
             break ;
@@ -75,9 +74,9 @@
 	            	for(j=0;j<length_array;j++){
 			 		value= strcmp (n,P[j].nom );
  	                	if(value==0){
- 	    	        	printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
-                	    printf("______________________________________________________________________________________\n\n");
-                	    printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
+ 	    	        	printf("     code       ||      nom       ||        prix         ||     quantite      ||\n");
+                    	printf("______________________________________________________________________________________\n\n");
+                	    printf(" %14d || %14s || %17.2fdh || %17d ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
                 	break ;
 			    }
 		      }
@@ -86,11 +85,11 @@
     }
     
    void Fmodifie(){
-      printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
-      printf("______________________________________________________________________________________\n\n");
+       	printf("     code       ||      nom       ||        prix         ||     quantite      ||\n");
+    	printf("______________________________________________________________________________________\n\n");
       for (j=0;j<length_array;j++){
 	        if(P[j].quantite<3){       
-	        printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
+	            printf(" %14d || %14s || %17.2fdh || %17d ||\n",P[j].code , P[j].nom , P[j].prix , P[j].quantite);
 		 }
 	    }
 	    
@@ -127,14 +126,16 @@
     //fafficher est un fonction pour afficher tous les produit 	
     void Fafficher(){
     	int i,a;
-    	printf("    code   ||         nom           ||            prix         ||        quantite     ||\n");
+    	printf("     code       ||      nom       ||        prix         ||     quantite      ||\n");
     	printf("______________________________________________________________________________________\n\n");
 	    for(i=0;i<length_array;i++){
-          printf("   %d    ||          %s           ||         %.2f dh         ||           %d        ||\n",P[i].code , P[i].nom , P[i].prix , P[i].quantite);
+          printf(" %14d || %14s || %17.2fdh || %17d ||\n",P[i].code , P[i].nom , P[i].prix , P[i].quantite);
      	}	
    }
    
    void Facheter(){	
+   
+         int max = P[0].prix,min=P[0].prix;
    
           Fafficher();
           
@@ -145,9 +146,10 @@
              if(c==P[j].code){
                 printf("ENTRER La QUANTITE QUE VOUS VOULEZ ACHETER:\n");
                 scanf("%d",&a);
+                printf("\n%d",j);
             
             if(a> P[j].quantite){
-                printf("la quantite que vous voulez demander\n est superieur du quantite de stocke!!!\n");
+                printf("\n la quantite que vous voulez demander\n est superieur du quantite de stocke!!!\n");
                 }else {
                  somme = a*( P[j].quantite +( P[j].quantite*15)/100);
                  printf(" LA PRIX DE PRODUIT(S) ACHETER EST: %.2f\n\n\n",somme);
@@ -155,31 +157,43 @@
                  
                  totalqauntite+=a;
                  totalsomme+=somme;
+                 
+                // max=P[0].prix;
+                 	if( max < P[j].prix ) max = P[j].prix;
+  		         
+                 	if( min > P[j].prix ) min = P[j].prix;         	
            }
         }
       }
+        printf("le prix des produits vendus aujourd'hui  : %.2f\n",totalsomme);
+    	printf("la quantite des produits vendus aujourd'hui  : %d\n",totalqauntite);
+    	printf("le max des prix des produits vendus aujourd'hui  : %d\n",max);
+    	printf("le min des prix des produits vendus aujourd'hui  : %d\n",min);
     }
     
-     // cet fonction pour affiche le statistique des achats    
+      
     void statistiques(){
     	
-    	printf("le prix des produits vendus aujourd'hui  : %.2f\n",totalsomme);
-    	printf("la quantite des produits vendus aujourd'hui  : %d\n",totalqauntite);
+//    	printf("le prix des produits vendus aujourd'hui  : %.2f\n",totalsomme);
+//    	printf("la quantite des produits vendus aujourd'hui  : %d\n",totalqauntite);
+//    	printf("le max des prix des produits vendus aujourd'hui  : %d\n",max);
+//    	printf("le min des prix des produits vendus aujourd'hui  : %d\n",min);
 	}	
 	
 	
  int main (){
  	
  	 	int n;
- 	printf("-----------------------------------");
- 	printf("\n  -> 1-add a product\n");
-    printf("\n  -> 2-search for a product\n ");
-    printf("\n  -> 3-modify a product\n");
- 	printf("\n  -> 4-delete a product\n");
- 	printf("\n  -> 5-display a product\n");
- 	printf("\n  -> 6-buy a product\n");
- 	printf("\n  -> 7-statistiques\n");
- 	printf("-----------------------------------");
+ 	printf("_____________________________________\a");
+ 	printf("|\n  -> 1-add a product\n           |");
+    printf("|\n  -> 2-search for a product\n    |");
+    printf("|\n  -> 3-modify a product\n        |");
+ 	printf("|\n  -> 4-delete a product\n        |");
+ 	printf("|\n  -> 5-display a product\n       |");
+ 	printf("|\n  -> 6-buy a product\n           |");
+ 	printf("|\n  -> 7-statistiques\n            |");
+ 	printf("_____________________________________");
+ 	
  	     do{
  	     	printf ("\n choisir un choix principale  :  ");
  	     scanf("%d",&n);
