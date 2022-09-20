@@ -7,6 +7,7 @@
          float prix ;
 	     int quantite;	
     };
+     
     
     struct stats{
     	int Id ;
@@ -24,8 +25,8 @@
 	};
 	
 //	   float max = P[0].prix,min=P[0].prix;
-     	int i,c,j,a,value,length_array=4,possition,totalqauntite=0;
- 	    char n[20]; 	    
+     	int i,c,j,a,value,length_array=4,possition,totalqauntite=0,count=0;
+ 	    char n[20]; 	   
         struct Produit P[1000];
         float somme =0,totalsomme=0;
         
@@ -128,9 +129,8 @@
  	                    possition = j;
                        for (j=possition;j<length_array;j++){
               		     P[j]=P[j+1];
-              		     length_array--;
-              	        break;	
 			          }	
+					   length_array--;
 		    		 }
 		           }	    
           }
@@ -200,13 +200,16 @@
                 printf("\n la quantite que vous voulez demander\n est superieur du quantite de stocke!!!\n");
                 }else {
                 	
+                	P[j].quantite-=a;
                 	
-                	T[j].Prix= P[j].prix;
-                	
-                	
+                	T[count].Id=P[j].code;
+                	strcpy(T[count].Nom,P[j].nom);
+                	T[count].Prix= P[j].prix;
+                	T[count].Qauntite= P[j].quantite;                	
+                	count++;
                  somme = a*( P[j].prix +( P[j].prix*15)/100);
                  printf(" LE PRIX DE PRODUIT(S) ACHETER EN TTC EST : %.2f DH\n\n\n",somme);
-                  P[j].quantite-=a;
+                  
                  
                  totalqauntite+=a;
                  totalsomme+=somme;
@@ -222,22 +225,27 @@
    
     }
     
+ void A(){
+	for(i=0;i<count;i++){
+		printf( "%d    %s   %f    %d \n",T[i].Id,T[i].Nom,T[i].Prix,T[i].Qauntite);
+	}
+}
       
 void statistiques(){
 	float min, max;
 	int i;
 				min = T[0].Prix;
-				for(i=0;i<length_array;i++){
-					if (T[i].Prix<min) min = T[i].Prix;
+				for(i=0;i<count;i++){
+					if (T[i+1].Prix<min) min = T[i].Prix;
 				}
 				max = T[0].Prix;
-				for(i=0;i<length_array;i++){
-					if (T[i].Prix>max) max = T[i].Prix;
+				for(i=0;i<count;i++){
+					if (T[i+1].Prix>max) max = T[i].Prix;
 				}
 	printf("le prix des produits vendus aujourd'hui  : %.2f\n",totalsomme);
 	printf("la quantite des produits vendus aujourd'hui  : %d\n",totalqauntite);
-	printf("le max des prix des produits vendus aujourd'hui  : %d\n",max);
-	printf("le min des prix des produits vendus aujourd'hui  : %d\n",min);
+	printf("le max des prix des produits vendus aujourd'hui  : %f\n",max);
+	printf("le min des prix des produits vendus aujourd'hui  : %f\n",min);
 	}	
 	
 	
@@ -252,6 +260,7 @@ void statistiques(){
  	printf("\n  -> 5-display a product\n       ");
  	printf("\n  -> 6-buy a product\n           ");
  	printf("\n  -> 7-statistiques\n            ");
+ 	printf("8");
  	printf("-----------------------------------");
  	
  	     do{
@@ -280,6 +289,9 @@ void statistiques(){
  	     	
  	     	case 7 : statistiques();
  	     	break ;
+ 	     	
+ 	     	case 8 : A();
+ 	     	break;
  	     	
 			default :  printf("Votre choix n'est pas là ");
 	        }  
