@@ -48,6 +48,7 @@
  		
  		   printf("\n entre le prix de produit : \n");
  		   scanf("%f",&P[length_array].prix);
+ 		   P[length_array].prix *= 1.15;
  		
  		   printf("\n entre la quantite de produit : \n");
  		   scanf("%d",&P[length_array].quantite);
@@ -205,9 +206,9 @@
                 	T[count].Id=P[j].code;
                 	strcpy(T[count].Nom,P[j].nom);
                 	T[count].Prix= P[j].prix;
-                	T[count].Qauntite= P[j].quantite;                	
+                	T[count].Qauntite= a;                	
                 	count++;
-                 somme = a*( P[j].prix +( P[j].prix*15)/100);
+                 somme = a*P[j].prix;
                  printf(" LE PRIX DE PRODUIT(S) ACHETER EN TTC EST : %.2f DH\n\n\n",somme);
                   
                  
@@ -225,9 +226,11 @@
    
     }
     
- void A(){
+ void transaction(){
+     	printf(" code     ||   nom    ||  prix   ||  quantite  ||\n");
+   	printf("__________________________________________________\n\n");
 	for(i=0;i<count;i++){
-		printf( "%d    %s   %f    %d \n",T[i].Id,T[i].Nom,T[i].Prix,T[i].Qauntite);
+		printf("%-10d||%-10s||%-10.2f||%-10d||\n",T[i].Id,T[i].Nom,T[i].Prix,T[i].Qauntite);
 	}
 }
       
@@ -252,7 +255,10 @@ void statistiques(){
  int main (){
  	
  	 	int n;
- 	printf("-----------------------------------");
+ 	
+ 	
+ 	     do{
+ 	     	printf("-----------------------------------");
  	printf("\n  -> 1-add a product\n           ");
     printf("\n  -> 2-search for a product\n    ");
     printf("\n  -> 3-modify a product\n        ");
@@ -260,12 +266,11 @@ void statistiques(){
  	printf("\n  -> 5-display a product\n       ");
  	printf("\n  -> 6-buy a product\n           ");
  	printf("\n  -> 7-statistiques\n            ");
- 	printf("8");
- 	printf("-----------------------------------");
- 	
- 	     do{
+ 	printf("\n  -> 8-transaction \n            ");
+ 	printf("\n-----------------------------------");
  	     	printf ("\n choisir un choix principale  :  ");
  	     scanf("%d",&n);
+ 	     system("cls");
  	     	
  	     	 switch(n){
  	     	
@@ -290,7 +295,7 @@ void statistiques(){
  	     	case 7 : statistiques();
  	     	break ;
  	     	
- 	     	case 8 : A();
+ 	     	case 8 : transaction();
  	     	break;
  	     	
 			default :  printf("Votre choix n'est pas là ");
