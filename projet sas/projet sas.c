@@ -251,8 +251,11 @@
    
     }
     
+<<<<<<< HEAD
     
     
+=======
+>>>>>>> 3f383bb0ab89e3939b2d75fa42efb1a714a83cec
  void transaction(){
      	printf(" code     ||   nom    ||  prix   ||  quantite  ||\n");
    	printf("__________________________________________________\n\n");
@@ -287,6 +290,7 @@ void statistiques(){
  	
  	
  	     do{
+<<<<<<< HEAD
  	     	printf("\n\t\t --------------------------------");
 		 	printf("\n\t\t|  -> 1-add a product            |");
 		    printf("\n\t\t|  -> 2-search for a product     |");
@@ -298,6 +302,19 @@ void statistiques(){
 		 	printf("\n\t\t|  -> 8-transaction              |");
 		 	printf("\n\t\t --------------------------------");
  	     	printf ("\n\n\t choisir un choix principale  :  ");
+=======
+ 	     	printf("-----------------------------------");
+ 	printf("\n  -> 1-add a product\n           ");
+    printf("\n  -> 2-search for a product\n    ");
+    printf("\n  -> 3-modify a product\n        ");
+ 	printf("\n  -> 4-delete a product\n        ");
+ 	printf("\n  -> 5-display a product\n       ");
+ 	printf("\n  -> 6-buy a product\n           ");
+ 	printf("\n  -> 7-statistiques\n            ");
+ 	printf("\n  -> 8-transaction \n            ");
+ 	printf("\n-----------------------------------");
+ 	     	printf ("\n choisir un choix principale  :  ");
+>>>>>>> 3f383bb0ab89e3939b2d75fa42efb1a714a83cec
  	     scanf("%d",&n);
  	     system("cls");
  	     	
